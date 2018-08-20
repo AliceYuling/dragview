@@ -1,0 +1,26 @@
+<div id="attributes">
+  <el-container>
+    <el-tabs v-model="activeName" type="border-card" :stretch="stretch" class="tabs">
+      <el-tab-pane label="数据" name="data" class="tab-data">
+        <div>
+          <data-setting
+            :type="type"
+            @textChange="textChange"
+            @imageChange="imageChange">
+          </data-setting> 
+        </div>
+      </el-tab-pane>
+      <el-tab-pane label="样式" name="style" class="tab-style">
+        <div>
+          <style-setting 
+            :type="type"
+            @contentChange="contentChange"
+            @bgColorChange="bgColorChange"
+            @fontSizeChange="fontSizeChange"
+            @fontColorChange="fontColorChange">
+          </style-setting>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
+  </el-container>
+</div>

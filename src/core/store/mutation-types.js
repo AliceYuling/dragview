@@ -1,0 +1,2 @@
+export const GET_COMPONENTS = 'GET_COMPONENTS'
+export const SET_COMPONENTS = 'SET_COMPONENTS'

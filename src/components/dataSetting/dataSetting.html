@@ -1,0 +1,23 @@
+<div class="sub-attribute">
+  <div v-if="type==='text'">
+    <el-form ref="textForm" :model="textForm">
+      <el-form-item label="数据源类型">
+        <el-select v-model="selectedDevice" placeholder="选择数据源类型" size="small">
+          <el-option v-for="device in devices" :key="device" :label="device" :value="device">
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+  </div>
+  <div v-if="type==='image'">
+    <el-upload
+      class="upload-image"
+      action="http://127.0.0.1:8080/demo/image/"
+      :on-change="fileUploaded">
+      <el-button
+        size="small"
+        type="primary">上传图片
+      </el-button>
+    </el-upload>
+  </div>
+</div>

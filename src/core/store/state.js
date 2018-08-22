@@ -1,5 +1,5 @@
 const state = {
-  components: [],
+  nodes: [],
   current: {} // 当前选中的元素
 }
 

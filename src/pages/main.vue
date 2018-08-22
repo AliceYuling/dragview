@@ -3,7 +3,7 @@
     <top-menu />
     <div class="main-panel">
       <preview @updateType="changeType" />
-      <cell />
+      <node />
       <attributes :type="attrType" />
     </div>
   </div>
@@ -11,7 +11,7 @@
 
 <script>
 import topMenu from '@/components/topmenu/topmenu.vue'
-import Cell from '@/components/cell/cell.vue'
+import Node from '@/components/node/node.vue'
 import Attributes from '@/components/attributes/attributes.vue'
 import Preview from '@/components/preview/preview.vue'
 
@@ -19,7 +19,7 @@ export default {
   name: 'Main',
   components: {
     topMenu,
-    Cell,
+    Node,
     Attributes,
     Preview
   },

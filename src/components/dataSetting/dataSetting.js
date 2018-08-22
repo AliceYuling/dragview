@@ -21,14 +21,11 @@ export default {
   },
   methods: {
     getDeviceData() {
-      console.log('getDeviceData')
       axios.get('/device').then(res => {
         this.devices = res.data
-        console.log(res.data)
       })
     },
     fileUploaded(file) {
-      console.log(file)
       this.$emit('imageChange', file.url)
     }
   }

@@ -1,1 +1,1 @@
-export const getComponents = state => state.componnets
+export const getNodes = state => state.nodes

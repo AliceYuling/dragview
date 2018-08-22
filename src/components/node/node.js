@@ -1,10 +1,11 @@
 export default {
-  name: 'Cell',
+  name: 'Node',
   methods: {
     dragStart(e) {
-      let cellName = e.target.getAttribute('data-name')
+      let nodeName = e.target.getAttribute('data-name')
       let info = {
-          type: cellName
+          type: nodeName,
+          id: ''
       }
       e.dataTransfer.setData('info', JSON.stringify(info))
     }

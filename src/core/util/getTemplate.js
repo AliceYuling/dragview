@@ -1,24 +1,24 @@
 import templates from '@/core/lib/templates/index.js'
 
-var getTemplate = function (info, _attr = {}) {
-  let component
+var getTemplate = function (info, _style = {}, _attr = {}) {
+  let node
 
-  component = templates[info.type](_attr)
+  node = templates[info.type](_attr, _style)
 
   // 没有class属性的，添加class属性
-  if (!component.attributes.class) {
-    component.attributes.class = {
+  if (!node.attributes.class) {
+    node.attributes.class = {
       type: 'text',
       value: ''
     }
   }
 
   // 添加组件标识 (info.id是唯一标识)
-  component.template = component.template.replace(' ', ' data-component-active ')
+  node.template = node.template.replace(' ', ' data-node-active ')
 
-  component.info = info
+  node.info = info
 
-  return component
+  return node
 }
 
 export default getTemplate

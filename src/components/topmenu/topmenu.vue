@@ -2,7 +2,7 @@
 <script src='./topmenu.js'></script>
 
 <style>
-  .top-bar{
+  #topbar{
     flex: 0 0 40px;
     width: 100%;
     background-color: #ccc;

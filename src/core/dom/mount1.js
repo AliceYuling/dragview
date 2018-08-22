@@ -2,8 +2,8 @@ import Vue from 'vue'
 // import preview from './preview'
 // 给定模板，和要挂载的元素id,挂载组件
 var mount = function (id, _component) {
-  let components = window._Vue.$store.state.components
-  let component = components.find(c => c.info.id === id)
+  let nodes = window._Vue.$store.state.nodes
+  let node = nodes.find(c => c.info.id === id)
   return new Promise((resolve, reject) => {
     // 需要延迟才能取到document.getElementById(id)
     setTimeout(() => {
@@ -14,13 +14,13 @@ var mount = function (id, _component) {
         })
       }
 
-      if (component.uid) { // 销毁旧实例
+      if (node.uid) { // 销毁旧实例
 
       }
 
       console.log(document.getElementById(id))
 
-      var res = Vue.compile(component.template)
+      var res = Vue.compile(node.template)
       let vm = new Vue({
         name: id.toString(),
         data () {
@@ -31,8 +31,8 @@ var mount = function (id, _component) {
         render: res.render,
         mounted () {
           this.$el.id = id
-          if (component) {
-            component.uid = this._uid
+          if (node) {
+            node.uid = this._uid
           }
 
           // 添加选中效果

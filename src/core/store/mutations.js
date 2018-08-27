@@ -15,17 +15,17 @@ const mutations = {
   },
 
   [types.SET_NODE] (state, node) {
-    let nodes = state.nodes.slice()
+    let nodes = state.nodes.slice(0)
     let temp = nodes.find(item => {
       return item.info.id === node.info.id
     })
     if (temp) {
-      nodes.map(item => {
+      state.nodes = nodes.map(item => {
         if (item.info.id === node.info.id) {
           item = Object.assign({}, node)
         }
-      })
-      state.nodes = nodes.slice()
+        return item
+      }).slice(0)
     } else {
       state.nodes.push(node)
     }

@@ -8,20 +8,10 @@
   width: 100%;
   border: 1px solid #ccc;
   position: relative;
+  overflow: scroll;
 }
-.mu-paper {
+.viewport {
   height: 100%;
-}
-.svg-wrapper {
-  position: relative;
-  z-index: 999;
-  width: 100%;
-  height: 0;
-  overflow: visible;
-}
-svg{
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+  width: 1920px;
 }
 </style>

@@ -10,6 +10,10 @@ var getBarChartTemplate = function (_attr, _style) {
     color: {
       type: 'color',
       value: ''
+    },
+    draggable: {
+      type: 'boolean',
+      value: true
     }
     /*
     style: {
@@ -35,7 +39,7 @@ var getBarChartTemplate = function (_attr, _style) {
   let strAttr = getStrTypeAttr(attributes)
   let strStyle = getStrTypeStyle(style)
 
-  let template = `<div ${strAttr} style="${strStyle}">Text</div>`
+  let template = `<div ${strAttr} style="${strStyle}"></div>`
 
   return { template, attributes, style }
 }

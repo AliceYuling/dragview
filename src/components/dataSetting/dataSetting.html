@@ -2,8 +2,8 @@
   <div v-if="type==='text'">
     <el-form ref="textForm" :model="textForm">
       <el-form-item label="数据源类型">
-        <el-select v-model="selectedDevice" placeholder="选择数据源类型" size="small">
-          <el-option v-for="device in devices" :key="device" :label="device" :value="device">
+        <el-select v-model="textDeviceType" placeholder="选择数据源类型" size="small">
+          <el-option v-for="dataType in types" :key="dataType" :label="dataType" :value="dataType">
           </el-option>
         </el-select>
       </el-form-item>
@@ -19,5 +19,83 @@
         type="primary">上传图片
       </el-button>
     </el-upload>
+  </div>
+  <div v-if="type==='barChart'">
+    <el-form ref="barForm" :model="barForm">
+      <el-form-item label="数据源类型">
+        <el-select v-model="barDeviceType" placeholder="选择数据源类型" size="small">
+          <el-option v-for="dataType in types" :key="dataType" :label="dataType" :value="dataType">
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <h3 class="serial-title">
+        <span>系列</span>
+        <el-button class="add-button" plain size="mini" icon="el-icon-circle-plus-outline"></el-button>
+      </h3>
+      <el-form-item>
+        <el-input v-model="barForm.serialName" value="serialName"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-select placeholder="选择设备" v-model="barDevice">
+          <el-option
+            v-for="device in devices"
+            :key="device"
+            :label="device"
+            :value="device"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-select placeholder="选择数据流" v-model="barDataStream">
+          <el-option 
+            v-for="dataStream in streams"
+            :key="dataStream"
+            :label="dataStream"
+            :value="dataStream"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+  </div>
+  <div v-if="type==='pieChart'">
+    <el-form ref="pieForm" :model="pieForm">
+      <el-form-item label="数据源类型">
+        <el-select v-model="pieDeviceType" placeholder="选择数据源类型" size="small">
+          <el-option v-for="dataType in types" :key="dataType" :label="dataType" :value="dataType">
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <h3 class="serial-title">
+        <span>系列</span>
+        <el-button class="add-button" plain size="mini" icon="el-icon-circle-plus-outline"></el-button>
+      </h3>
+      <el-form-item>
+        <el-input v-model="pieForm.serialName" value="serialName"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-select placeholder="选择设备" v-model="pieDevice">
+          <el-option
+            v-for="device in devices"
+            :key="device"
+            :label="device"
+            :value="device"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-select placeholder="选择数据流" v-model="pieDataStream">
+          <el-option 
+            v-for="dataStream in streams"
+            :key="dataStream"
+            :label="dataStream"
+            :value="dataStream"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
   </div>
 </div>

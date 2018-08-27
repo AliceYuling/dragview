@@ -18,8 +18,6 @@ var mount = function (id, _component) {
 
       }
 
-      console.log(document.getElementById(id))
-
       var res = Vue.compile(node.template)
       let vm = new Vue({
         name: id.toString(),

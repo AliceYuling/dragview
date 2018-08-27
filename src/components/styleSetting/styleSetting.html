@@ -26,4 +26,13 @@
   <div v-if="type==='image'">
     <label>暂无样式</label>
   </div>
+  <div v-if="type==='barChart'">
+    <el-form :inline="true" ref="barStyleForm" v-model="barStyle">
+      <h3 class="form-title">图表格式</h3>
+      <el-form-item label="标题">
+        <el-input v-model="barStyle.title">
+        </el-input>
+      </el-form-item>
+    </el-form>
+  </div>
 </div>

@@ -8,6 +8,9 @@ export default {
         bgColor: '',
         fontSize: '',
         fontColor: ''
+      },
+      barStyle: {
+        title: '未命名' 
       }
     }
   },

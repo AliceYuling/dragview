@@ -1,10 +1,17 @@
 import mount from '@/core/dom/mount.js'
 import getTemplate from '@/core/util/getTemplate.js'
+import getStrTypeStyle from '@/core/util/getStrTypeStyle.js'
 import guid from '../../core/util/guid';
 import { mapMutations } from 'vuex'
+import Dot from '../dot/dot.vue'
+import Edge from '../edge/edge.vue'
 
 export default {
   name: 'Attributes',
+  components: {
+    Dot,
+    Edge
+  },
   data() {
     return {
       dotWidth: 4,
@@ -37,6 +44,12 @@ export default {
     }
   },
 
+  watch: {
+    current () {
+      this.$emit('updateType', this.current.info.type)
+    }
+  },
+
   methods: {
     ...mapMutations([
       'setState'
@@ -54,17 +67,18 @@ export default {
     },
 
     drop(e) {
-      console.log('elselected: ' + this.elSelelcted)
       let info = JSON.parse(e.dataTransfer.getData('info'))
       let targetId = info.id
       let nodes = JSON.parse(JSON.stringify(this.nodes))
       let node = nodes.find(item => {
         return item.info.id === targetId
       })
+      let firstDrag = false
       if(!node) {
         let id = guid()
         info.id = id
         node = getTemplate(info)
+        firstDrag = true
       }
       
       // 计算位置
@@ -75,13 +89,15 @@ export default {
       node.style.left = (eventX - nodeWidth)
       node.style.top = (eventY - barHeight)
       node = getTemplate(info, node.style, node.attributes)
-
+      if (firstDrag) {
+        this.mount(node)
+      } else {
+        this.setStyle(node)
+      }
       this.setNode(node)
       this.$store.commit('setState', {
         current: node
       })
-      this.mount(node)
-      this.$emit('updateType', info.type)
     },
 
     mount(node) {
@@ -98,7 +114,6 @@ export default {
           let previewEl = document.getElementById('preview')
           previewEl.appendChild(tempEl)
           vm.$mount(tempEl)
-          console.log(vm)
           // vm.$on('click', this.selectEl)
           // vm.$on('dragstart', this.dragStart)
           if(node.info.type === 'pieChart') {
@@ -134,11 +149,12 @@ export default {
           }
         })
       }
-      
-      /*
-      setTimeout(() => {
-        this.nodes = nodes
-      }, 0)*/
+    },
+    setStyle(node) {
+      let el = document.getElementById(node.info.id)
+      if (el) {
+        el.style = getStrTypeStyle(node.style)
+      }
     }
   }
 }

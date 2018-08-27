@@ -13,7 +13,7 @@ var mount = function (id, _node) {
       })
     }
 
-    if (node.uid) { // 销毁旧实例
+    if (node && node.uid) { // 销毁旧实例
 
     }
 
@@ -59,7 +59,7 @@ var mount = function (id, _node) {
           let nodes = store.state.nodes.slice()
           if (nodes) {
             let currentNode = nodes.find(item => {
-              return item.info.id === e.target.id
+              return item.info.id === e.currentTarget.id
             })
             if (currentNode) {
               store.commit('setState', {
